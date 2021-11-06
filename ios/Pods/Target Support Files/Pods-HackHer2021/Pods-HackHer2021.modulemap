@@ -1,0 +1,6 @@
+module Pods_HackHer2021 {
+  umbrella header "Pods-HackHer2021-umbrella.h"
+
+  export *
+  module * { export * }
+}

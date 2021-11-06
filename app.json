@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "HackHer2021",
+    "slug": "HackHer2021",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "HackHer2021"
+}
