@@ -1,12 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <form>
+        <label>
+          What disabilities do you experience?:
+        <select>
+          <option value="grapefruit">Grapefruit</option>
+          <option value="lime">Lime</option>
+          <option selected value="coconut">Coconut</option>
+          <option value="mango">Mango</option>
+        </select>
+        </label>
+      </form>
     </View>
   );
 }
