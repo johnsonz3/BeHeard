@@ -2,29 +2,23 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  const disabilities = ["Acquired brain injury","ALS/Lou Gehrig’s",  "Amputation",
+  "Anxiety disorders",  "Arthritis",  "Autism Spectrum Disorders",  "Cerebral Palsy",
+  "Chronic Pain",  "Deafness or Hard of Hearing",  "Dementia",  "Epilepsy",
+  "Multiple Sclerosis",  "Parkinson’s",  "Stuttering",  "Tourrette’s Syndrome",
+  "Visual Impairments"]
+
+  const listItems = disabilities.map((disability) =>
+  <option value = {disability}>{disability}</option>)
+
   return (
     <View style={styles.container}>
       <form>
-        <label>
-          What disabilities are you experiencing?:
+        <label style= {{color: "white", fontSize: "32px", ...padding(10, 20, 10, 50) }}>
+          What disabilities are you experiencing?
         <select>
-          <option value="" disabled selected></option>
-          <option value="Acquired brain injury">Acquired brain injury</option>
-          <option value="ALS/Lou Gehrig’s">ALS/Lou Gehrig’s</option>
-          <option value="Amputation">Amputation</option>
-          <option value="Anxiety disorders">Anxiety disorders</option>
-          <option value="Arthritis">Arthritis</option>
-          <option value="Autism Spectrum Disorders">Autism Spectrum Disorders</option>
-          <option value="Cerebral Palsy">Cerebral Palsy</option>
-          <option value="Chronic Pain">Chronic Pain</option>
-          <option value="Deafness or Hard of Hearing">CDeafness or Hard of Hearing</option>
-          <option value="Dementia">Dementia</option>
-          <option value="Epilepsy">Epilepsy</option>
-          <option value="Multiple Sclerosis">Multiple Sclerosis</option>
-          <option value="Parkinson’s">Parkinson’s</option>
-          <option value="Stuttering">Stuttering</option>
-          <option value="Tourrette’s Syndrome">Tourrette’s Syndrome</option>
-          <option value="Visual Impairments">Visual Impairments</option>
+        {listItems}
+      
         </select>
         </label>
       </form>
@@ -35,8 +29,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#9653C2',
+    alignItems: 'left',
     justifyContent: 'center',
   },
 });
+
+function padding(a, b, c, d) {
+  return {
+    paddingTop: a,
+    paddingRight: b ? b : a,
+    paddingBottom: c ? c : a,
+    paddingLeft: d ? d : (b ? b : a)
+  }
+}
