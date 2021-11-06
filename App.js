@@ -13,14 +13,14 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <form>
-        <label style= {{color: "white", fontSize: "32px", ...padding(10, 20, 10, 50) }}>
+      <form style={{justifyContent: "center", width: "100%", textAlign: "center"}}>
+        <label style= {{color: "white", fontSize: "32px"}}>
           What disabilities are you experiencing?
-        <select>
+        <select style={{marginLeft: "1rem"}}>
         {listItems}
-      
         </select>
         </label>
+        
       </form>
     </View>
   );
@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
     alignItems: 'left',
     justifyContent: 'center',
   },
+  formStyle: {
+    marginLeft: '50%',
+  }
 });
 
 function padding(a, b, c, d) {
