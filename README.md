@@ -1,7 +1,5 @@
 # BeHeard
-<img src="/demovideo.gif" width="250" height="500"/>
 
-# Environment Setup
 ## Cloning our repo
 - Open a command/terminal window and cd into your choice of directory 
 - Run `git clone https://github.com/johnsonzhang434/HackHer2021.git`
@@ -26,3 +24,5 @@
 - Below is the application's `development menu`
 <img width="1440" alt="Screen Shot 2021-11-07 at 10 58 28 AM" src="https://user-images.githubusercontent.com/57369805/140652351-d41b846a-748d-45e6-a709-83d9962f6d85.png">
 
+# Demo
+<img src="/demovideo.gif" width="250" height="500"/>
