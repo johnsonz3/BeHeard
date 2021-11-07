@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput, Picker } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Pressable, Picker } from 'react-native';
 import SelectBox from 'react-native-multi-selectbox';
 import { xorBy } from 'lodash'
 
-const FormScreen = () => {
+const FormScreen = ({navigation}) => {
     const [selectedDisabilities, setSelectedDisabilities] = useState([]);
     const [selectedSupports, setSelectedSupports] = useState([]);
     const [name, setName] = useState('');
@@ -166,6 +166,15 @@ const FormScreen = () => {
                     isMulti
                 />
             </View>
+
+            <View style={styles.button}>
+                <Pressable
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Profile')}
+                >
+                    <Text style={styles.buttonText}>Next</Text>
+                </Pressable>
+            </View>
         </View>
     )
 }
@@ -195,7 +204,24 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: 'white'
 
-    }
+    },
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 100,
+        elevation: 3,
+        backgroundColor: 'white',
+    },
+    buttonText: {
+        fontFamily: 'Avenir',
+        fontSize: 18,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: '#6447a8',
+    },
 });
 
 function padding(a, b, c, d) {
