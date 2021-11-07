@@ -1,8 +1,5 @@
 # HackHer2021
 
-![demovideo](https://user-images.githubusercontent.com/57369805/140653340-8aa416c2-a48a-42c8-b73b-1d791494e587.gif)
-
-
 # Environment Setup
 ## Cloning our repo
 - Open a command/terminal window and cd into your choice of directory 
