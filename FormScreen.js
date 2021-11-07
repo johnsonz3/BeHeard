@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput, Picker } from 'react-native';
+import { StyleSheet, ScrollView, Text, TextInput, View, SafeAreaView } from 'react-native';
 import SelectBox from 'react-native-multi-selectbox';
 import { xorBy } from 'lodash'
 
@@ -114,12 +114,16 @@ const FormScreen = () => {
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.blockContainer, styles.bottomBorder}>
+        <ScrollView
+            style={styles.outerContainer}
+            contentContainerStyle={styles.container}
+        >
+            <View style={styles.blockContainer}>
                 <Text style={styles.text} >What is your name?</Text>
                 <TextInput
                     onChangeText={setName}
                     value={name}
+                    style={styles.TextInput}
                 />
             </View>
 
@@ -131,11 +135,12 @@ const FormScreen = () => {
                     selectedValues={selectedDisabilities}
                     onMultiSelect={onDisabilityChange()}
                     onTapClose={onDisabilityChange()}
-                    arrowIconColor='white'
+                    arrowIconColor='#291b4a'
                     searchIconColor='white'
                     toggleIconColor='#291b4a'
+                    containerStyle={{ backgroundColor: 'white', padding: 10, borderRadius: 100 }}
                     inputFilterStyle={{ color: "white", fontSize: 15 }} // search text
-                    optionsLabelStyle={{ color: '#291b4a', fontFamily: 'Avenir' }} // option text
+                    optionsLabelStyle={{ color: 'white', fontFamily: 'Avenir' }} // option text
                     multiOptionContainerStyle={{ backgroundColor: '#291b4a' }} // bubble bg color
                     multiOptionsLabelStyle={{ color: 'white' }} // bubble text color
                     multiListEmptyLabelStyle={{ color: '#291b4a' }} // placeholder text color
@@ -153,11 +158,12 @@ const FormScreen = () => {
                     selectedValues={selectedSupports}
                     onMultiSelect={onSupportsChange()}
                     onTapClose={onSupportsChange()}
-                    arrowIconColor='white'
+                    arrowIconColor='#291b4a'
                     searchIconColor='white'
                     toggleIconColor='#291b4a'
+                    containerStyle={{ backgroundColor: 'white', padding: 10, borderRadius: 100 }}
                     inputFilterStyle={{ color: "white", fontSize: 15 }} // search text
-                    optionsLabelStyle={{ color: '#291b4a', fontFamily: 'Avenir' }} // option text
+                    optionsLabelStyle={{ color: 'white', fontFamily: 'Avenir' }} // option text
                     multiOptionContainerStyle={{ backgroundColor: '#291b4a' }} // bubble bg color
                     multiOptionsLabelStyle={{ color: 'white' }} // bubble text color
                     multiListEmptyLabelStyle={{ color: '#291b4a' }} // placeholder text color
@@ -166,24 +172,30 @@ const FormScreen = () => {
                     isMulti
                 />
             </View>
-        </View>
+        </ScrollView>
+
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    outerContainer: {
         backgroundColor: '#6447a8',
+        marginTop: 20,
+        alignSelf: 'center',
+        width: '100%',
+    },
+    container: {
         justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 100,
-        paddingLeft: 0,
+        paddingTop: 50,
+        paddingLeft: 300
     },
     blockContainer: {
-        flex: 1,
-        justifyContent: 'flex-start',
+        flex: 0,
         alignItems: 'flex-start',
         width: '70%',
+        height: 'auto',
+        paddingTop: 25,
+        paddingBottom: 25,
     },
     text: {
         fontFamily: 'Avenir',
@@ -191,11 +203,19 @@ const styles = StyleSheet.create({
         color: 'white',
         letterSpacing: 0.25,
     },
-    bottomBorder: {
+    TextInput: {
+        backgroundColor: 'white',
+        borderRadius: 100,
+        fontSize: 18,
+        color: '#6447a8',
+        paddingTop: 7,
+        paddingBottom: 7,
+        paddingLeft: 15,
         borderBottomWidth: 1,
-        borderBottomColor: 'white'
-
-    }
+        borderBottomColor: 'white',
+        width: '100%',
+        marginTop: 10
+    },
 });
 
 function padding(a, b, c, d) {
