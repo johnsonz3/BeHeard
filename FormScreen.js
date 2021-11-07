@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, ScrollView, Text, TextInput, View, SafeAreaView } from 'react-native';
+import { StyleSheet, ScrollView, Text, TextInput, View, Pressable } from 'react-native';
 import SelectBox from 'react-native-multi-selectbox';
 import { xorBy } from 'lodash'
 
-const FormScreen = () => {
+const FormScreen = ({ navigation }) => {
     const [selectedDisabilities, setSelectedDisabilities] = useState([]);
     const [selectedSupports, setSelectedSupports] = useState([]);
     const [name, setName] = useState('');
@@ -172,8 +172,16 @@ const FormScreen = () => {
                     isMulti
                 />
             </View>
-        </ScrollView>
 
+            <View style={[styles.blockContainer_button]}>
+                <Pressable
+                    style={styles.button}
+                    onPress={() => navigation.navigate('Profile')}
+                >
+                    <Text style={styles.buttonText}>Next</Text>
+                </Pressable>
+            </View>
+        </ScrollView>
     )
 }
 
@@ -186,12 +194,20 @@ const styles = StyleSheet.create({
     },
     container: {
         justifyContent: 'center',
+        alignItems: 'center',
         paddingTop: 50,
-        paddingLeft: 300
     },
     blockContainer: {
         flex: 0,
         alignItems: 'flex-start',
+        width: '70%',
+        height: 'auto',
+        paddingTop: 25,
+        paddingBottom: 25,
+    },
+    blockContainer_button: {
+        flex: 0,
+        alignItems: 'center',
         width: '70%',
         height: 'auto',
         paddingTop: 25,
@@ -214,7 +230,25 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: 'white',
         width: '100%',
-        marginTop: 10
+        marginTop: 10,
+        borderBottomColor: 'white',
+
+    },
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 12,
+        borderRadius: 100,
+        backgroundColor: 'white',
+        width: '50%'
+    },
+    buttonText: {
+        fontFamily: 'Avenir',
+        fontSize: 18,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: '#6447a8',
     },
 });
 
