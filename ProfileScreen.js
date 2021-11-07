@@ -1,20 +1,14 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Pressable, Text } from 'react-native';
+import ProfileCard from './ProfileCard.js'
 
 const ProfileScreen = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Hello, my name is</Text>
-            <Text style={styles.personal_text}>Joel</Text>
-
-            <Text style={styles.text}>I experience</Text>
-            <Text style={styles.personal_text}>Autism Spectrum Disorders</Text>
-           
-            <Text style={styles.text}>To support me, please</Text>
-            <Text style={styles.personal_text}>Avoid making loud sounds</Text>
-            <Text style={styles.personal_text}>Ask me before you help</Text>
-
+            <ProfileCard heading='Hello, my name is' text='Joel' />
+            <ProfileCard heading='I experience' text='Autism Spectrum Disorders' />
+            <ProfileCard heading='To support me, please' text='- Avoid making loud sounds' text2='- Ask me before you help' />
         </View>
     )
 }
@@ -24,28 +18,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#6447a8',
         color: 'white',
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
+        paddingTop: 50,
     },
-    text: {
-        position: 'relative',
-        top: -10,
-        fontFamily: 'Avenir',
-        color: 'white',
-        letterSpacing: 0.25,
-        fontSize: 24,
-        paddingBottom: 50,
-    },
-    personal_text: {
-        position: 'relative',
-        top: -50,
-        fontFamily: 'Avenir',
-        color: 'white',
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
-        fontSize: 24,
-        paddingBottom: 20,
-    },
+    
+    
    
     buttonText: {
         fontFamily: 'Avenir',
