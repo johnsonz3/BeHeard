@@ -1,8 +1,13 @@
 # HackHer2021
 
 # Environment Setup
+## Cloning our repo
+- Open a command/terminal window and cd into your choice of directory 
+- Run `git clone https://github.com/johnsonzhang434/HackHer2021.git`
+- This will create this repo in your current directory
+
 ## Installation
-- Open the command/terminal window
+- Open a command/terminal window
 - CD into the HackHer2021 repo
 - Run `npm install`
 - Install `Expo` next
