@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput, Pressable, Picker } from 'react-native';
+import { StyleSheet, ScrollView, Text, TextInput, View, Pressable } from 'react-native';
 import SelectBox from 'react-native-multi-selectbox';
 import { xorBy } from 'lodash'
 
-const FormScreen = ({navigation}) => {
+const FormScreen = ({ navigation }) => {
     const [selectedDisabilities, setSelectedDisabilities] = useState([]);
     const [selectedSupports, setSelectedSupports] = useState([]);
     const [name, setName] = useState('');
@@ -114,12 +114,16 @@ const FormScreen = ({navigation}) => {
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.blockContainer, styles.bottomBorder}>
+        <ScrollView
+            style={styles.outerContainer}
+            contentContainerStyle={styles.container}
+        >
+            <View style={styles.blockContainer}>
                 <Text style={styles.text} >What is your name?</Text>
                 <TextInput
                     onChangeText={setName}
                     value={name}
+                    style={styles.TextInput}
                 />
             </View>
 
@@ -131,11 +135,12 @@ const FormScreen = ({navigation}) => {
                     selectedValues={selectedDisabilities}
                     onMultiSelect={onDisabilityChange()}
                     onTapClose={onDisabilityChange()}
-                    arrowIconColor='white'
+                    arrowIconColor='#291b4a'
                     searchIconColor='white'
                     toggleIconColor='#291b4a'
+                    containerStyle={{ backgroundColor: 'white', padding: 10, borderRadius: 100 }}
                     inputFilterStyle={{ color: "white", fontSize: 15 }} // search text
-                    optionsLabelStyle={{ color: '#291b4a', fontFamily: 'Avenir' }} // option text
+                    optionsLabelStyle={{ color: 'white', fontFamily: 'Avenir' }} // option text
                     multiOptionContainerStyle={{ backgroundColor: '#291b4a' }} // bubble bg color
                     multiOptionsLabelStyle={{ color: 'white' }} // bubble text color
                     multiListEmptyLabelStyle={{ color: '#291b4a' }} // placeholder text color
@@ -153,11 +158,12 @@ const FormScreen = ({navigation}) => {
                     selectedValues={selectedSupports}
                     onMultiSelect={onSupportsChange()}
                     onTapClose={onSupportsChange()}
-                    arrowIconColor='white'
+                    arrowIconColor='#291b4a'
                     searchIconColor='white'
                     toggleIconColor='#291b4a'
+                    containerStyle={{ backgroundColor: 'white', padding: 10, borderRadius: 100 }}
                     inputFilterStyle={{ color: "white", fontSize: 15 }} // search text
-                    optionsLabelStyle={{ color: '#291b4a', fontFamily: 'Avenir' }} // option text
+                    optionsLabelStyle={{ color: 'white', fontFamily: 'Avenir' }} // option text
                     multiOptionContainerStyle={{ backgroundColor: '#291b4a' }} // bubble bg color
                     multiOptionsLabelStyle={{ color: 'white' }} // bubble text color
                     multiListEmptyLabelStyle={{ color: '#291b4a' }} // placeholder text color
@@ -167,7 +173,7 @@ const FormScreen = ({navigation}) => {
                 />
             </View>
 
-            <View style={styles.button}>
+            <View style={[styles.blockContainer_button]}>
                 <Pressable
                     style={styles.button}
                     onPress={() => navigation.navigate('Profile')}
@@ -175,24 +181,37 @@ const FormScreen = ({navigation}) => {
                     <Text style={styles.buttonText}>Next</Text>
                 </Pressable>
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    outerContainer: {
         backgroundColor: '#6447a8',
+        marginTop: 20,
+        alignSelf: 'center',
+        width: '100%',
+    },
+    container: {
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 100,
-        paddingLeft: 0,
+        paddingTop: 50,
     },
     blockContainer: {
-        flex: 1,
-        justifyContent: 'flex-start',
+        flex: 0,
         alignItems: 'flex-start',
         width: '70%',
+        height: 'auto',
+        paddingTop: 25,
+        paddingBottom: 25,
+    },
+    blockContainer_button: {
+        flex: 0,
+        alignItems: 'center',
+        width: '70%',
+        height: 'auto',
+        paddingTop: 25,
+        paddingBottom: 25,
     },
     text: {
         fontFamily: 'Avenir',
@@ -200,19 +219,28 @@ const styles = StyleSheet.create({
         color: 'white',
         letterSpacing: 0.25,
     },
-    bottomBorder: {
+    TextInput: {
+        backgroundColor: 'white',
+        borderRadius: 100,
+        fontSize: 18,
+        color: '#6447a8',
+        paddingTop: 7,
+        paddingBottom: 7,
+        paddingLeft: 15,
         borderBottomWidth: 1,
-        borderBottomColor: 'white'
+        borderBottomColor: 'white',
+        width: '100%',
+        marginTop: 10,
+        borderBottomColor: 'white',
 
     },
     button: {
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
+        padding: 12,
         borderRadius: 100,
-        elevation: 3,
         backgroundColor: 'white',
+        width: '50%'
     },
     buttonText: {
         fontFamily: 'Avenir',
