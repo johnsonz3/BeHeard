@@ -1,4 +1,5 @@
 # HackHer2021
+<img src="/demovideo.gif" width="250" height="500"/>
 
 # Environment Setup
 ## Cloning our repo
