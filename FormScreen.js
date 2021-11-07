@@ -1,27 +1,171 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet, View, Text, TextInput, Picker } from 'react-native';
+import SelectBox from 'react-native-multi-selectbox';
+import { xorBy } from 'lodash'
 
 const FormScreen = () => {
-    const disabilities = ["Acquired brain injury", "ALS/Lou Gehrig’s", "Amputation",
-        "Anxiety disorders", "Arthritis", "Autism Spectrum Disorders", "Cerebral Palsy",
-        "Chronic Pain", "Deafness or Hard of Hearing", "Dementia", "Epilepsy",
-        "Multiple Sclerosis", "Parkinson’s", "Stuttering", "Tourrette’s Syndrome",
-        "Visual Impairments"]
+    const [selectedDisabilities, setSelectedDisabilities] = useState([]);
+    const [selectedSupports, setSelectedSupports] = useState([]);
+    const [name, setName] = useState('');
 
-    const listItems = disabilities.map((disability) =>
-        <option value={disability}>{disability}</option>
-    )
+    const DISABILITIES = [
+        {
+            item: 'Acquired brain injury',
+            id: 'Acquired brain injury',
+        },
+        {
+            item: 'ALS/Lou Gehrig’s',
+            id: 'ALS/Lou Gehrig’s',
+        },
+        {
+            item: 'Amputation',
+            id: 'Amputation',
+        },
+        {
+            item: 'Anxiety disorders',
+            id: 'Anxiety disorders',
+        },
+        {
+            item: 'Arthritis',
+            id: 'Arthritis',
+        },
+        {
+            item: 'Autism Spectrum Disorders',
+            id: 'Autism Spectrum Disorders',
+        },
+        {
+            item: 'Cerebral Palsy',
+            id: 'Cerebral Palsy',
+        },
+        {
+            item: 'Chronic Pain',
+            id: 'Chronic Pain',
+        },
+        {
+            item: 'Deafness or Hard of Hearing',
+            id: 'Deafness or Hard of Hearing',
+        },
+        {
+            item: 'Dementia',
+            id: 'Dementia',
+        },
+        {
+            item: 'Epilepsy',
+            id: 'Epilepsy',
+        },
+        {
+            item: 'Multiple Sclerosis',
+            id: 'Multiple Sclerosis',
+        },
+        {
+            item: 'Parkinson’s',
+            id: 'Parkinson’s',
+        },
+        {
+            item: 'Stuttering',
+            id: 'Stuttering',
+        },
+        {
+            item: 'Tourrette’s Syndrome',
+            id: 'Tourrette’s Syndrome',
+        },
+        {
+            item: 'Visual Impairments',
+            id: 'Visual Impairments',
+        }]
+
+    const SUPPORTS = [
+        {
+            item: 'Speak loudly',
+            id: 'Speak loudly',
+        },
+        {
+            item: 'Speak slowly',
+            id: 'Speak slowly',
+        },
+        {
+            item: 'Speak directly to me and not my interpreter',
+            id: 'Speak directly to me and not my interpreter',
+        },
+        {
+            item: 'Put things in my reach',
+            id: 'Put things in my reach',
+        },
+        {
+            item: 'Be patient when I speak',
+            id: 'Be patient when I speak',
+        },
+        {
+            item: 'Read me the options out loud',
+            id: 'Read me the options out loud',
+        },
+        {
+            item: 'Ask how you can help',
+            id: 'Ask how you can help',
+        }]
+
+
+    function onDisabilityChange() {
+        return (item) => setSelectedDisabilities(xorBy(selectedDisabilities, [item], 'id'))
+    }
+
+    function onSupportsChange() {
+        return (item) => setSelectedSupports(xorBy(selectedSupports, [item], 'id'))
+    }
 
     return (
         <View style={styles.container}>
-            <form>
-                <label style={{ color: "white", fontSize: "32px", ...padding(10, 20, 10, 50) }}>
-                    What disabilities are you experiencing?
-                    <select>
-                        {listItems}
-                    </select>
-                </label>
-            </form>
+            <View style={styles.blockContainer, styles.bottomBorder}>
+                <Text style={styles.text} >What is your name?</Text>
+                <TextInput
+                    onChangeText={setName}
+                    value={name}
+                />
+            </View>
+
+            <View style={styles.blockContainer}>
+                <Text style={styles.text} >What disabilities are you experiencing?</Text>
+                <SelectBox
+                    label=''
+                    options={DISABILITIES}
+                    selectedValues={selectedDisabilities}
+                    onMultiSelect={onDisabilityChange()}
+                    onTapClose={onDisabilityChange()}
+                    arrowIconColor='white'
+                    searchIconColor='white'
+                    toggleIconColor='#291b4a'
+                    inputFilterStyle={{ color: "white", fontSize: 15 }} // search text
+                    optionsLabelStyle={{ color: '#291b4a', fontFamily: 'Avenir' }} // option text
+                    multiOptionContainerStyle={{ backgroundColor: '#291b4a' }} // bubble bg color
+                    multiOptionsLabelStyle={{ color: 'white' }} // bubble text color
+                    multiListEmptyLabelStyle={{ color: '#291b4a' }} // placeholder text color
+                    listEmptyLabelStyle={{ color: '#291b4a' }} // "No results found" text
+                    selectedItemStyle={{ color: 'orange', backgroundColor: 'red' }}
+                    isMulti
+                />
+            </View>
+
+            <View style={styles.blockContainer}>
+                <Text style={styles.text} >What do you find helpful?</Text>
+                <SelectBox
+                    label=''
+                    options={SUPPORTS}
+                    selectedValues={selectedSupports}
+                    onMultiSelect={onSupportsChange()}
+                    onTapClose={onSupportsChange()}
+                    arrowIconColor='white'
+                    searchIconColor='white'
+                    toggleIconColor='#291b4a'
+                    inputFilterStyle={{ color: "white", fontSize: 15 }} // search text
+                    optionsLabelStyle={{ color: '#291b4a', fontFamily: 'Avenir' }} // option text
+                    multiOptionContainerStyle={{ backgroundColor: '#291b4a' }} // bubble bg color
+                    multiOptionsLabelStyle={{ color: 'white' }} // bubble text color
+                    multiListEmptyLabelStyle={{ color: '#291b4a' }} // placeholder text color
+                    listEmptyLabelStyle={{ color: '#291b4a' }} // "No results found" text
+                    selectedItemStyle={{ color: 'orange', backgroundColor: 'red' }}
+                    isMulti
+                />
+            </View>
         </View>
     )
 }
@@ -29,10 +173,29 @@ const FormScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#9653C2',
-        alignItems: 'left',
+        backgroundColor: '#6447a8',
         justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 100,
+        paddingLeft: 0,
     },
+    blockContainer: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        width: '70%',
+    },
+    text: {
+        fontFamily: 'Avenir',
+        fontSize: 20,
+        color: 'white',
+        letterSpacing: 0.25,
+    },
+    bottomBorder: {
+        borderBottomWidth: 1,
+        borderBottomColor: 'white'
+
+    }
 });
 
 function padding(a, b, c, d) {
