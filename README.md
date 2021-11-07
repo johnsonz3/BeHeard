@@ -1,5 +1,8 @@
 # HackHer2021
 
+![demovideo](https://user-images.githubusercontent.com/57369805/140653340-8aa416c2-a48a-42c8-b73b-1d791494e587.gif)
+
+
 # Environment Setup
 ## Cloning our repo
 - Open a command/terminal window and cd into your choice of directory 
@@ -24,3 +27,4 @@
 - Any changes made to the project will be implemented onto the application live.
 - Below is the application's `development menu`
 <img width="1440" alt="Screen Shot 2021-11-07 at 10 58 28 AM" src="https://user-images.githubusercontent.com/57369805/140652351-d41b846a-748d-45e6-a709-83d9962f6d85.png">
+
