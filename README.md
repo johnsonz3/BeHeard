@@ -1,4 +1,4 @@
-# HackHer2021
+# BeHeard
 <img src="/demovideo.gif" width="250" height="500"/>
 
 # Environment Setup
